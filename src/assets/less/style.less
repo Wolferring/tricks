@@ -24,6 +24,7 @@ body{
   min-height: 100%;
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
   font-size: 14px;
+  overflow-x: hidden;
 }
 a {
   color: @font-black;
@@ -336,7 +337,32 @@ input,textarea{
   .form-control{
     padding: 5px 0;
   }
-
+  .form-group{
+    &:after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 0;
+      background: #fff;
+      transition:all .3s linear;
+    }
+    &.full{
+      flex:1;
+      width: 100%;
+      .form-control{
+        width: 100%;
+      }
+    }
+    margin: 15px 0;
+  }
+  .border-bottom{
+    &:after{
+      left: 0;
+      right: 0;
+      background-color: @border-color;
+    }
+  }  
 }
 .icon-only {
   min-width: 44px;
@@ -460,8 +486,20 @@ input,textarea{
 }
 
 .slide-right-enter,
-.slide-right-leave-active {
-  transform: translate(50px, 0)
+.slide-right-leave-to {
+  transform: translate(-200px, 0);
+  opacity:0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: transform .3s
+}
+
+.slide-left-enter,
+.slide-left-leave-to {
+  transform: translate(200px,0);
+  opacity: 0;
 }
 
 .bounceInQuick-enter-active,
