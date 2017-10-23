@@ -18,10 +18,10 @@ p{
   box-sizing: border-box;
 }
 html{
-  min-height: 100%;
+  height: 100%;
 }
 body{
-  min-height: 100%;
+  height: 100%;
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
   font-size: 14px;
   overflow-x: hidden;
@@ -36,9 +36,10 @@ a {
     opacity: .7
   }
 }
-
+#app{height: 100%;}
 .view{
   padding-top: @nav-height;
+  height: 100%;
 }
 .page {
   background-color: #fff;
@@ -255,6 +256,9 @@ input::-webkit-input-placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &.grid-center{
+    justify-content:center;
+  }
 }
 
 input,textarea{

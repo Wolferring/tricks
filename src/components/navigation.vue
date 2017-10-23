@@ -16,8 +16,8 @@
       </router-link>
     </div>     
     <div class="right">
-      <transition name="slide-right">
-        
+      <transition name="slide-left">
+      
       <router-link 
       to="/tricks/create" 
       class="link nav-item icon-only"
@@ -26,6 +26,9 @@
         <i class="iconfont icon-add"></i>
       </router-link>
       </transition>
+      <a href="javascript:void(0)" class="nav-item link icon-only">
+        <i class="iconfont icon-profile"></i>
+      </a>
     </div>    
   </div>
 </template>
@@ -35,18 +38,22 @@
       return {
         navs: [
           {
-            title: 'Home',
+            title: '首页',
             url: '/home',
-            child: []
-          },
-          {
-            title: 'About',
-            url: '/about',
             child: []
           },
           {
             title: 'Tricks',
             url: '/tricks'
+          },
+          {
+            title: '文章',
+            url: '/articles'
+          },
+          {
+            title: '关于',
+            url: '/about',
+            child: []
           }
         ]
       }

@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/'
 // import config from './assets/js/config.js'
 import wInput from './components/input'
 // main style
@@ -14,6 +15,7 @@ Vue.config.productionTip = true
 /* eslint-disable no-new */
 const app = new Vue({
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
