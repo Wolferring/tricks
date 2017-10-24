@@ -26,7 +26,7 @@
         <i class="iconfont icon-add"></i>
       </router-link>
       </transition>
-      <a href="javascript:void(0)" class="nav-item link icon-only">
+      <a href="javascript:void(0)" @click="openLogin()" class="nav-item link icon-only">
         <i class="iconfont icon-profile"></i>
       </a>
     </div>    
@@ -57,6 +57,18 @@
           }
         ]
       }
+    },
+    computed: {
+      comConf () {
+        return this.$store.getters.getComConf
+      }
+    },
+    methods: {
+      openLogin () {
+        this.$store.commit('COM_CONF', {
+          isLoginScreenShow: !this.comConf.isLoginScreenShow
+        })
+      }
     }
   }
 </script>
@@ -69,7 +81,7 @@
     justify-content:space-between;
     align-items:center;
     padding: 0 15px;
-    z-index: 5002;
+    z-index: @navbar-index;
     height: @nav-height;    
     background: #fff;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, .02);
