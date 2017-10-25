@@ -8,11 +8,15 @@
         <router-view/>
       </transition>
     </div>
+    <transition name="fade-quick">
+    <login v-if="!comConf.userHasLogin" v-show="comConf.isLoginScreenShow"></login>
+    </transition>
   </div>
 </template>
 
 <script>
 import navigation from '@/components/navigation.vue'
+import login from '@/components/login.vue'
 export default {
   data () {
     return {
@@ -30,8 +34,14 @@ export default {
       this.transition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
     }
   },
+  computed: {
+    comConf () {
+      return this.$store.getters.getComConf
+    }
+  },
   components: {
-    navigation
+    navigation,
+    login
   }
 }
 </script>

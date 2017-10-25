@@ -15,9 +15,9 @@
       :type="type" 
       class="form-control"
       :value="value"
-      @input="updateValue($event.target.value)"
-      @focus="focus = true;focused=true"
-      @blur="focus = false"
+      @keyup="updateValue($event.target.value)"
+      @focus="inputFocus()"
+      @blur="inputBlur()"
       :maxlength="maxlength"
       >
   </div>  
@@ -32,7 +32,11 @@
       }
     },
     created () {
-      this.validReg = new RegExp(this.valid)
+      if (this.must && !this.valid) {
+        this.validReg = new RegExp(/^\S+$/)
+      } else {
+        this.validReg = new RegExp(this.valid)
+      }
     },
     computed: {
       notEmpty () {
@@ -48,6 +52,16 @@
     methods: {
       updateValue (value) {
         this.$emit('input', value)
+      },
+      inputFocus () {
+        this.focus = true
+        this.focused = true
+        if (this.type === 'password') {
+          this.$emit('input', '')
+        }
+      },
+      inputBlur () {
+        this.focus = false
       }
     },
     props: {
@@ -79,11 +93,14 @@
       position: relative;
       z-index: 1;
       background-color: initial;
+      font-size: 16px;
+      line-height:2.5;
     }
 
     label{
       position: absolute;
-      bottom: 5px;
+      bottom: 50%;
+      transform:translateY(50%);
       z-index: 0;
       left: 0;
       font-size: inherit;
@@ -92,6 +109,7 @@
       &.top{
         font-size: 12px;
         bottom: 100%;
+        transform:translateY(0);
         color: @font-black;
       }
     }

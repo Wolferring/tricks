@@ -1,6 +1,8 @@
 <template>
 	<div class="page">
-    Home
+    <div class="section">
+      Home
+    </div>
   </div>
 </template>
 <script>
